@@ -1,0 +1,35 @@
+{
+  "name": "des-package-defaults",
+  "version": "1.0.4",
+  "description": "Npm package development template",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/designsynchrony/des-package-defaults.git"
+  },
+  "keywords": [
+    "package",
+    "dev",
+    "development",
+    "npm"
+  ],
+  "author": "Design Synchrony",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "@babel/preset-react": "^7.17.12",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^3.3.0",
+    "style-loader": "^1.0.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "bugs": {
+    "url": "https://github.com/designsynchrony/des-package-defaults/issues"
+  },
+  "homepage": "https://github.com/designsynchrony/des-package-defaults"
+}
