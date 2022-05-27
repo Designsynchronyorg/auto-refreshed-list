@@ -1,20 +1,26 @@
 {
-  "name": "des-package-defaults",
-  "version": "1.0.4",
-  "description": "Npm package development template",
+  "name": "des-auto-refreshed-list",
+  "version": "1.0.1",
+  "description": "Easily display live feeds and lists, stress free",
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/designsynchrony/des-package-defaults.git"
+    "url": "https://github.com/designsynchrony/des-auto-refreshed-list.git"
   },
   "keywords": [
-    "package",
-    "dev",
-    "development",
-    "npm"
+    "Data Refresh",
+    "Subscriber Lists Refresh",
+    "Chat List Refresh",
+    "Transaction History Refresh",
+    "Messages List Refresh",
+    "Messages List Refresh",
+    "Post Refresh",
+    "Contact Lists Refresh",
+    "Clients List Refresh",
+    "File Update Refresh"
   ],
   "author": "Design Synchrony",
   "license": "MIT",
@@ -28,8 +34,13 @@
     "webpack": "^4.46.0",
     "webpack-cli": "^4.9.2"
   },
-  "bugs": {
-    "url": "https://github.com/designsynchrony/des-package-defaults/issues"
+  "dependencies": {
+    "axios": "^0.26.1",
+    "des-svg-icons": "^1.0.1",
+    "des-utilities": "^1.0.4"
   },
-  "homepage": "https://github.com/designsynchrony/des-package-defaults"
+  "bugs": {
+    "url": "https://github.com/designsynchrony/des-auto-refreshed-list/issues"
+  },
+  "homepage": "https://github.com/designsynchrony/des-auto-refreshed-list"
 }
