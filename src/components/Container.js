@@ -106,12 +106,12 @@ export default class Container extends Component {
   render() {
     const emptyMessage 
     return (
-      // if chat list is not hidden and user has chat list, then set the height to the screen height
+      // if list is not hidden and user has list, then set the height to the screen height
       <div className={(!this.state.hideList && Object.keys(this.state.list).length > 0 && 'h-screen ') + "flex flex-col w-full white-gray-bg"}>
-        {/* chat list header */}
-        <Header toggleFullScreen={this.toggleFullScreen} chatBoxIsHidden={this.props.chatBoxIsHidden} toggleListDisplay={this.toggleListDisplay} hideList={this.state.hideList} />
+        {/* list header */}
+        <Header toggleFullScreen={this.toggleFullScreen} listIsHidden={this.props.listBoxIsHidden} toggleListDisplay={this.toggleListDisplay} hideList={this.state.hideList} />
 
-        {/* chat list content */}
+        {/* list content */}
         {/* check if there are messages */}
         {
           Object.keys(this.state.list).length < 1
@@ -120,7 +120,7 @@ export default class Container extends Component {
             )
             : (
               <div className={this.state.hideList ? 'hidden' : "overflow-x-clip overflow-y-auto"}>
-                <List list={this.state.list} loadChat={this.loadChat} />
+                <List list={this.state.list} loadList={this.loadList} />
               </div>
             )
         }

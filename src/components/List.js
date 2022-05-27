@@ -11,7 +11,7 @@ export default class List extends Component {
         this.loadList = this.loadList.bind(this);
     }
 
-    // load chats
+    // load lists
     loadList = (list) => {
         // pass list details to parent
        CallParentMethod(this, 'loadList');

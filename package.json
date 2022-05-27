@@ -31,14 +31,14 @@
     "babel-loader": "^8.2.5",
     "css-loader": "^3.3.0",
     "style-loader": "^1.0.1",
-    "webpack": "^4.46.0",
+    "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "des-http-processor": "^1.0.0",
     "des-svg-icons": "^1.0.1",
-    "des-utilities": "^1.0.4",
-    "des-http-processor": "^1.0.0"
+    "des-utilities": "^1.0.4"
   },
   "bugs": {
     "url": "https://github.com/designsynchrony/des-auto-refreshed-list/issues"

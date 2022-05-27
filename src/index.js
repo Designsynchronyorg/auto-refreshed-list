@@ -1,11 +1,13 @@
-import ChatList from './components/ChatList'
-import ChatListContent from './components/ChatListContent'
-import ChatListHeader from './components/ChatListHeader'
-import ChatPreview from './components/ChatPreview';
+import Header from './components/Header';
+import Footer from './../../live-chat/src/components/Footer';
+import Container from './components/Container';
+import List from './../../live-chat/src/components/List';
+import ListItem from './components/ListItem';
 
 export {
-    ChatList,
-    ChatListContent,
-    ChatListHeader,
-    ChatPreview,
+    Header,
+    Footer,
+    Container,
+    List,
+    ListItem
 };

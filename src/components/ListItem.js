@@ -23,7 +23,7 @@ export default class ListItem extends Component {
         return (
             <>
                 <div onClick={this.loadList} className={(
-                    // if chat has not been read
+                    // if list has not been read
                     this.props.user.message.is_read === '0'
                         &&
                         // and current user is the receiver
