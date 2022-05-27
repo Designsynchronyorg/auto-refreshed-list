@@ -37,7 +37,8 @@
   "dependencies": {
     "axios": "^0.26.1",
     "des-svg-icons": "^1.0.1",
-    "des-utilities": "^1.0.4"
+    "des-utilities": "^1.0.4",
+    "des-http-processor": "^1.0.0"
   },
   "bugs": {
     "url": "https://github.com/designsynchrony/des-auto-refreshed-list/issues"

@@ -2,23 +2,27 @@
 import { Component } from 'react';
 import Avatar from '../features/Avatar';
 
-export default class ChatPreview extends Component {
+export default class ListItem extends Component {
     constructor(props) {
         super(props);
 
         // bind this
-        this.loadChat = this.loadChat.bind(this);
+        this.loadList = this.loadList.bind(this);
+        
+        BindThis(this, ['loadList']);
     }
 
-    loadChat = () => {
+    loadList = () => {
         // pass user id to parent
-        this.props.loadChat(this.props.user);
+        
+        CallParentMethod(this, 'toggleFullScreen', [this.props.list]);
+        // this.props.loadList(this.props.user);
     }
 
     render() {
         return (
             <>
-                <div onClick={this.loadChat} className={(
+                <div onClick={this.loadList} className={(
                     // if chat has not been read
                     this.props.user.message.is_read === '0'
                         &&

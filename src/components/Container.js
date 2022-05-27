@@ -1,12 +1,12 @@
 
 import { Component } from 'react';
-import ChatListContent from './ChatListContent';
-import ChatListHeader from './ChatListHeader';
+import List from './List';
+import Header from './Header';
 import axios from 'axios';
-import { MyConfig } from '../../MyConfig';
-import { CallParentMethod } from 'des-utilities';
+import { CallParentMethod, BindThis } from 'des-utilities';
+import { HttpRequest } from 'des-http-processor';
 
-export default class ChatList extends Component {
+export default class Container extends Component {
   constructor(props) {
     super(props);
 
@@ -14,21 +14,23 @@ export default class ChatList extends Component {
     this.state = {
       fullScreen: false,
       hideList: false,
-      chatList: {},
+      list: {},
     };
 
-    // get chat list
-    let formUrl = MyConfig.apiUrl + 'get-users-chatted-with';
+    // get list
+    let formUrl = this.props.url;
     let self = this;
     const token = sessionStorage.getItem('token');
-    axios.get(formUrl, {
-      headers: { "Authorization": `Bearer ${token}` }
-    })
+    HttpRequest()
+    // axios.get(formUrl, {
+    //   headers: { "Authorization": `Bearer ${token}` }
+    // })
+
       .then(function (response) {
         // add that to the state
         if (response.data.data.users.length > 0) {
           self.setState({
-            chatList: response.data.data
+            list: response.data.data
           })
         }
 
@@ -39,12 +41,9 @@ export default class ChatList extends Component {
       });
 
     // bind this
-    this.toggleFullScreen = this.toggleFullScreen.bind(this);
-    this.toggleListDisplay = this.toggleListDisplay.bind(this);
-    this.refreshList = this.refreshList.bind(this);
-    this.loadChat = this.loadChat.bind(this);
+    BindThis(this, ['toggleFullScreen','toggleListDisplay','refreshList','loadList']);
 
-    // fetch chat list
+    // fetch list
     this.refreshList();
   }
 
@@ -70,10 +69,10 @@ export default class ChatList extends Component {
     })
   }
 
-  // load chats
-  loadChat = (user) => {
+  // load list
+  loadList = (user) => {
     // pass user user to parent
-    this.props.loadChat(user);
+    this.props.loadList(user);
   }
 
   // toggle fullscreen
@@ -82,10 +81,10 @@ export default class ChatList extends Component {
     CallParentMethod(this, 'toggleFullScreen');
   }
 
-  // refresh chat list
+  // refresh list
   refreshList = () => {
-    // get chat list
-    let formUrl = MyConfig.apiUrl + 'get-users-chatted-with';
+    // get list
+    let formUrl = this.props.url;
     let self = this;
     const token = sessionStorage.getItem('token');
     axios.get(formUrl, {
@@ -95,7 +94,7 @@ export default class ChatList extends Component {
         // add that to the state if response is not empty
         if (response.data.data.users.length > 0) {
           self.setState({
-            chatList: response.data.data
+            list: response.data.data
           })
         }
       })
@@ -105,22 +104,23 @@ export default class ChatList extends Component {
   }
 
   render() {
+    const emptyMessage 
     return (
       // if chat list is not hidden and user has chat list, then set the height to the screen height
-      <div className={(!this.state.hideList && Object.keys(this.state.chatList).length > 0 && 'h-screen ') + "flex flex-col w-full white-gray-bg"}>
+      <div className={(!this.state.hideList && Object.keys(this.state.list).length > 0 && 'h-screen ') + "flex flex-col w-full white-gray-bg"}>
         {/* chat list header */}
-        <ChatListHeader toggleFullScreen={this.toggleFullScreen} chatBoxIsHidden={this.props.chatBoxIsHidden} toggleListDisplay={this.toggleListDisplay} hideList={this.state.hideList} />
+        <Header toggleFullScreen={this.toggleFullScreen} chatBoxIsHidden={this.props.chatBoxIsHidden} toggleListDisplay={this.toggleListDisplay} hideList={this.state.hideList} />
 
         {/* chat list content */}
         {/* check if there are messages */}
         {
-          Object.keys(this.state.chatList).length < 1
+          Object.keys(this.state.list).length < 1
             ? (
-              <div className={this.state.hideList ? 'hidden' : "py-3 px-2 text-center darker-white-gray-bg gray-border"}><p>You do not have any message at the moment.</p></div>
+              <div className={this.state.hideList ? 'hidden' : "py-3 px-2 text-center darker-white-gray-bg gray-border"}><p></p></div>
             )
             : (
               <div className={this.state.hideList ? 'hidden' : "overflow-x-clip overflow-y-auto"}>
-                <ChatListContent chatList={this.state.chatList} loadChat={this.loadChat} />
+                <List list={this.state.list} loadChat={this.loadChat} />
               </div>
             )
         }
